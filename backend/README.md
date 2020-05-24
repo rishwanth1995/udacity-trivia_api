@@ -66,31 +66,26 @@ One note before you delve into your tasks: for each endpoint you are expected to
 8. Create a POST endpoint to get questions to play the quiz. This endpoint should take category and previous question parameters and return a random questions within the given category, if provided, and that is not one of the previous questions. 
 9. Create error handlers for all expected errors including 400, 404, 422 and 500. 
 
-REVIEW_COMMENT
-```
-This README is missing documentation of your endpoints. Below is an example for your endpoint to get all categories. Please use it as a reference for creating your documentation and resubmit your code. 
-
-Endpoints
-GET '/categories'
-GET ...
-POST ...
-DELETE ...
-
+##API:
 GET '/categories'
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
 - Request Arguments: None
-- Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs. 
+- Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs.
+- Example Response:
+``` 
 {'1' : "Science",
 '2' : "Art",
 '3' : "Geography",
 '4' : "History",
 '5' : "Entertainment",
 '6' : "Sports"}
+```
 
 GET '/questions?page=<page_number>'
 - Fetches a paginated dictionary of questions for all available categories. Each page contains 10 questions.
 - Request Query paramter: Optional (page:int)
 - Example Response:
+```
 { "categories": {
    "1": "Science", 
    "2": "Art", 
@@ -119,26 +114,34 @@ GET '/questions?page=<page_number>'
  "success": true, 
  "total_questions": 2
 }}
+```
 
 DELETE questions/<question_id> Delete an existing question from all available question
 - Request Arguments: question_id:int
 Example Response:
+
+```
 {
   "deleted": "5", 
   "success": true
 }
+```
 
 POST /questions Add a new question to the repository of available questions
  - Request body:{question: string, answer: string, difficulty: int, category: string}
  - Example Response:
+ ```
  {
      "created" : "5",
      "success" : True
  }
+```
 
  POST /questions/search Fetches all questions where a substring matches the search term (not case-sensitive)
  - Request body: {searchTerm: string}
  - Example Response:
+
+ ```
  {
   "current_category": null, 
   "questions": [
@@ -153,10 +156,13 @@ POST /questions Add a new question to the repository of available questions
   "success": true, 
   "total_questions": 1
 }
+```
 
 GET /categories/<int:category_id>/questions Fetches a dictionary of questions for the specified category
  - Request argument: category_id:int
  - Example Response:
+
+ ```
  {
   "current_category": 1, 
   "questions": [
@@ -178,10 +184,13 @@ GET /categories/<int:category_id>/questions Fetches a dictionary of questions fo
   "success": true, 
   "total_questions": 2
 }
+```
 
 POST /quizzes Fetches one random question within a specified category. Previously asked questions are not asked again.
 - Request body: {previous_questions: arr, quiz_category: {id:int, type:string}}
 - Example Response:
+
+```
 {
   "question": {
     "answer": "The Liver", 
@@ -192,7 +201,6 @@ POST /quizzes Fetches one random question within a specified category. Previousl
   }, 
   "success": true
 }
-
 
 ```
 
